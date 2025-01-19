@@ -1,0 +1,67 @@
+body {
+    font-family: 'Times New Roman', Times, serif, sans-serif;
+    background-color: #f4f4f4;
+    color: #060101;
+    text-align: center;
+    padding: 20px;
+}
+
+.game {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+#message {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+#word-board {
+    font-size: 2em;
+    margin-bottom: 20px;
+    letter-spacing: 10px;
+}
+
+.letters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.letter {
+    background-color: #ff1900;
+    color: white;
+    font-size: 1.5em;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor:pointer;
+    transition: background-color 0.1s;
+}
+
+.letter:hover {
+    background-color: gray;
+}
+
+.letter:active {
+    background-color: black;
+}
+
+
+
+
+img{
+
+    width: auto;
+    height: 10%;
+}
+
+.btn {
+    margin: 30px;
+    font-size: 30px;
+    background-color: red;
+}
