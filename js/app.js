@@ -11,6 +11,8 @@ let guessWord =[];
 let attemptsCount=0;
 let imageIndex=0;
 let currentWord="";
+let word;
+let underScore=[];
 /*-------------------------------------Cached Elements---------------------------------------------------*/ 
 const displayWord =document.querySelector("#word-board");
 const messageElement= document.querySelector("#message");
@@ -20,14 +22,23 @@ const attemptsElement = document.querySelector("#attempts");
 
 
 /*---------------------------------------------Functions----------------------------------------------------*/
-const UpdateDisplayWord=()=>{
+const initiateDisplayWord=()=>{
 displayWord.textContent= "_ ".repeat(currentWord.length);
 
 
-    
-
 
 }
+
+
+// updateDisplayWord =(letter)=>{
+
+// displayWord.textContent.replace("_ ",letter)
+
+
+
+// }
+
+
 
 const updateImageIndex =()=>{
 
@@ -37,24 +48,104 @@ imageElement.src=hangmanImages[imageIndex];
 
 }
 
+const updateAttempt =()=>{
+attemptsElement.textContent=`Attempts:  ${maxAttepmts-attemptsCount}`;
+
+
+
+}
+
+
+const updateMessage =(message)=>{
+
+messageElement.textContent=message;
+
+
+
+}
+
+
+
+
+
+const btnDisabled=()=>{
+    letterBtns.forEach((btn)=>{
+
+        btn.classList.add("disabled");
+
+
+    })
+
+
+}
+
+
+
+
+const btnEnbaled=()=>{
+    letterBtns.forEach((btn)=>{
+
+        btn.classList.remove("disabled");
+
+
+    })
+
+
+}
+
+
+const handleBtnClick=(event)=>{
+
+let clickedLetter=event.target.textContent;
+let isCorrectGuess=false;
+
+word.forEach((w,index)=>{
+
+    if(w===clickedLetter && w.includes("_ ")){
+     w[index]=clickedLetter;
+     isCorrectGuess=true;
+     //need to be completed
+    }
+  
+}
+
+
+
+
+
+)}
+
+
+
+
+
+
+
+
+
+
 
 
 const init =()=>{
 randomIndex=Math.floor(Math.random() * wordsBank.length);
 console.log(randomIndex);
 currentWord+=wordsBank[randomIndex];
-// console.log(currentWord);
+console.log(currentWord);
+word =currentWord.split("");
+console.log(word)
 imageIndex=0;
 attemptsCount=0;
-UpdateDisplayWord();
+initiateDisplayWord();
 updateImageIndex();
-
+updateAttempt();
+btnEnbaled();
+updateMessage("");
 
 
 
 }
 
-init()
+init();
 
 
 
@@ -62,3 +153,11 @@ init()
 
 
 /*-------------------------------Event Listener----------------------------------------------------------*/ 
+
+
+letterBtns.forEach((button)=>{
+
+button.addEventListener("click",handleBtnClick);
+
+
+})

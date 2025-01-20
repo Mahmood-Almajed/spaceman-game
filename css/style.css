@@ -55,13 +55,24 @@ body {
 
 
 img{
-
-    width: auto;
-    height: 10%;
+max-width:220px;
+height: 220px;
+display: flex;
+justify-content: center;
+align-self: center;
 }
 
 .btn {
     margin: 30px;
     font-size: 30px;
     background-color: red;
+}
+
+.image{
+ border: 2px solid black;
+ width:320px;
+ display: flex;
+ justify-content: center;
+ align-content: center;
+ margin-left:26%;
 }
