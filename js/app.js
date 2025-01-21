@@ -1,5 +1,5 @@
 /*--------------------------------Constants----------------------------------------------------------*/ 
-const wordsBank=["JAVA" ,"PYTHON","JAVASCRIPT","CSS","HTML","RUBY"];
+const wordsBank=["JAVA" ,"PYTHON","JAVASCRIPT","CSS","HTML","RUBY","KOTLIN", "SWIFT", "GO", "TYPESCRIPT", "SQL", "PERL", "DART"];
 const maxAttepmts=4;
 const  hangmanImages = ["images/image0.png","images/image1.png", "images/image2.png", "images/image3.png", "images/image4.png"];
 
@@ -7,11 +7,10 @@ const  hangmanImages = ["images/image0.png","images/image1.png", "images/image2.
 
 
 /*---------------------------------Veriables----------------------------------------------------------*/ 
-let guessWord =[];
 let attemptsCount=0;
 let imageIndex=0;
 let currentWord="";
-let word;
+let word=[];
 let underScore=[];
 /*-------------------------------------Cached Elements---------------------------------------------------*/ 
 const displayWord =document.querySelector("#word-board");
@@ -19,24 +18,27 @@ const messageElement= document.querySelector("#message");
 const letterBtns=document.querySelectorAll(".letter");
 const imageElement=document.querySelector("img");
 const attemptsElement = document.querySelector("#attempts");
+const letterSingleBtn=document.querySelector(".letter");
+const playAgainEl= document.querySelector("#play-again");
+
 
 
 /*---------------------------------------------Functions----------------------------------------------------*/
 const initiateDisplayWord=()=>{
-displayWord.textContent= "_ ".repeat(currentWord.length);
+displayWord.textContent= "_".repeat(currentWord.length);
 
 
 
 }
 
 
-// updateDisplayWord =(letter)=>{
+updateDisplayWord =(letter)=>{
 
-// displayWord.textContent.replace("_ ",letter)
+displayWord.textContent=letter;
 
 
 
-// }
+}
 
 
 
@@ -48,8 +50,16 @@ imageElement.src=hangmanImages[imageIndex];
 
 }
 
+const updateWinImageIndex =()=>{
+
+    imageElement.src="chill-guy.gif";
+    
+    
+    
+    }
+
 const updateAttempt =()=>{
-attemptsElement.textContent=`Attempts:  ${maxAttepmts-attemptsCount}`;
+attemptsElement.textContent=`Attempts left:  ${maxAttepmts-attemptsCount}`;
 
 
 
@@ -71,10 +81,16 @@ messageElement.textContent=message;
 const btnDisabled=()=>{
     letterBtns.forEach((btn)=>{
 
-        btn.classList.add("disabled");
+        btn.disabled =true;
 
 
     })
+}
+
+const finalWord=()=>{
+
+displayWord.textContent=currentWord;
+
 
 
 }
@@ -85,7 +101,7 @@ const btnDisabled=()=>{
 const btnEnbaled=()=>{
     letterBtns.forEach((btn)=>{
 
-        btn.classList.remove("disabled");
+        btn.disabled =false;
 
 
     })
@@ -96,24 +112,73 @@ const btnEnbaled=()=>{
 
 const handleBtnClick=(event)=>{
 
+    
 let clickedLetter=event.target.textContent;
 let isCorrectGuess=false;
 
 word.forEach((w,index)=>{
 
-    if(w===clickedLetter && w.includes("_ ")){
+    if(w===clickedLetter){
      w[index]=clickedLetter;
      isCorrectGuess=true;
      //need to be completed
+     console.log(w);
+     underScore[index]=clickedLetter;
+     updateDisplayWord(underScore);
+     console.log(underScore)
     }
-  
+    })
+     if(isCorrectGuess){
+        if(!underScore.includes("_")){
+            updateMessage(`Gongratulations You win! the word was ${currentWord}`);
+                    updateWinImageIndex();
+                  event.target.disabled=true;
+
+        }
+
+    }
+
+    else {
+        attemptsCount++;
+        imageIndex++;
+        updateAttempt();
+        updateImageIndex();
+        updateMessage(`Game over 0 attempts left , the word was ${currentWord}`);
+       
+
+
+       
+        if(attemptsCount<maxAttepmts){
+            updateMessage(`╰（‵□′）╯ Try again!`);
+        }
+        else{
+            btnDisabled();
+            finalWord();
+            playAgainEl.style.display="block";
+
+        }
+
+      
+         
+
+
+
+    }
+
+        
+    
+
+
+
+
+event.target.disabled=true;
+event.target.style.backgroundColor="gray";
+
+
+
+
 }
 
-
-
-
-
-)}
 
 
 
@@ -128,18 +193,28 @@ word.forEach((w,index)=>{
 
 const init =()=>{
 randomIndex=Math.floor(Math.random() * wordsBank.length);
+
 console.log(randomIndex);
+currentWord="";
 currentWord+=wordsBank[randomIndex];
 console.log(currentWord);
+
 word =currentWord.split("");
-console.log(word)
+console.log(word);
+
 imageIndex=0;
 attemptsCount=0;
+
 initiateDisplayWord();
+
+underScore=displayWord.textContent.split("")
+
+// console.log(underScore);
 updateImageIndex();
 updateAttempt();
 btnEnbaled();
-updateMessage("");
+updateMessage("Hint: Programming language");
+playAgainEl.style.display="none";
 
 
 
@@ -148,7 +223,16 @@ updateMessage("");
 init();
 
 
+const playAgainBtn=()=>{
+letterBtns.forEach((button)=>{
 
+    button.style.backgroundColor="red";
+})
+
+init();
+
+
+}
 
 
 
@@ -161,3 +245,5 @@ button.addEventListener("click",handleBtnClick);
 
 
 })
+
+playAgainEl.addEventListener("click", playAgainBtn);
