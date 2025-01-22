@@ -121,15 +121,13 @@ const handleBtnClick = (event) => {
         if (w === clickedLetter) {
             w[index] = clickedLetter;
             isCorrectGuess = true;
-            console.log(w);
             underScore[index] = clickedLetter;
             updateDisplayWord(underScore);
-            console.log(underScore)
         }
     })
     if (isCorrectGuess) {
         if (!underScore.includes("_")) {
-            updateMessage(`Gongrats You won!! the word was ${currentWord}`);
+            updateMessage(`Congrats You won!! , the word was ${currentWord}`);
             updateWinImageIndex();
             event.target.disabled = true;
             playAgainEl.style.display = "block";
@@ -150,7 +148,7 @@ const handleBtnClick = (event) => {
 
 
         if (attemptsCount < maxAttepmts) {
-            updateMessage(`╰（‵□′）╯ Try again!`);
+            updateMessage(`＼( °□° )／  Try again!`);
         }
         else {
             btnDisabled();
@@ -195,13 +193,10 @@ const handleBtnClick = (event) => {
 const init = () => {
     randomIndex = Math.floor(Math.random() * wordsBank.length);
 
-    console.log(randomIndex);
     currentWord = "";
     currentWord += wordsBank[randomIndex];
-    console.log(currentWord);
 
     word = currentWord.split("");
-    console.log(word);
 
     imageIndex = 0;
     attemptsCount = 0;
