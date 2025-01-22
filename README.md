@@ -4,8 +4,9 @@
 
 ## Description: 
 
-**Spaceman/Hangman** is a word-guessing game where players must correctly guess the hidden word before running out of attempts. The goal is to save the hangman from being hanged by guessing the word correctly in time!
 
+
+**Spaceman**  is a word-guessing game where players must correctly guess the hidden word before running out of attempts. The goal is to save the hangman from being hanged by guessing the word correctly in time I chose this game because it offers a great opportunity to practice and demonstrate DOM manipulation techniques.
 
 ## Getting Started
 
