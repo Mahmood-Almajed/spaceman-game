@@ -129,6 +129,7 @@ const handleBtnClick = (event) => {
         if (!underScore.includes("_")) {
             updateMessage(`Congrats You won!! , the word was ${currentWord}`);
             updateWinImageIndex();
+            finalWord();
             event.target.disabled = true;
             playAgainEl.style.display = "block";
 
