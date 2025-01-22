@@ -3,18 +3,18 @@ const instructions = document.getElementById('instructions');
 
 
 
-const playGameEl=document.querySelector("#play-btn");
+const playGameEl = document.querySelector("#play-btn");
 
 
-const playBtn =()=>{
+const playBtn = () => {
 
-    window.location.href="index1.html";
+    window.location.href = "index1.html";
 
 }
 
 
 
-playGameEl.addEventListener('click',playBtn);
+playGameEl.addEventListener('click', playBtn);
 
 
 instructionsButton.addEventListener('click', () => {

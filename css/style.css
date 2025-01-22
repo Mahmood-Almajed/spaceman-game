@@ -26,6 +26,7 @@ h1 {
     font-size: 3em;
     margin-bottom: 20px;
     color: #61dafb;
+    margin: 84px;
 }
 
 .button {
@@ -70,7 +71,7 @@ h1 {
 }
 
 .letter {
-    background-color: #ff1900;
+    background-color: #007cffb8;
     color: white;
     font-size: 1.5em;
     width: 40px;
@@ -83,17 +84,17 @@ h1 {
 }
 
 .letter:hover {
-    background-color: green;
+    background-color: rgb(135, 217, 227);
 }
 
 img {
     width: 220px;
-    height: 220px;
-    object-fit: cover;
+    height: 240px;
+    object-fit: contain;
     display: flex;
     justify-content: center;
     align-self: center;
-   
+
 }
 
 .btn {
@@ -109,5 +110,14 @@ img {
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    background-color: rgb(253, 107, 58);
+    background-color: #f7fafb;
+    border: 9px solid #007cffb8;
+    border-radius: 55px;
+
+}
+
+#play-again {
+    background-color: #007cffb8;
+
+
 }
