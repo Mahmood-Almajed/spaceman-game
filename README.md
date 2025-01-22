@@ -7,7 +7,7 @@
 **Spaceman/Hangman** is a word-guessing game where players must correctly guess the hidden word before running out of attempts. The goal is to save the hangman from being hanged by guessing the word correctly in time!
 
 
-## Getting Strated
+## Getting Started
 
  - [deployed game link](https://mahmood-almajed.github.io/spaceman-game/).
  - [trello project planning](https://trello.com/b/ImwXt4oM/project-1-planning-spaceman).
