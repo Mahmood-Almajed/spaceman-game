@@ -208,7 +208,7 @@ const init = () => {
     updateImageIndex();
     updateAttempt();
     btnEnbaled();
-    updateMessage("Hint: Programming language & frameworks");
+    updateMessage("Hint: Programming language or framework");
     playAgainEl.style.display = "none";
 
 
